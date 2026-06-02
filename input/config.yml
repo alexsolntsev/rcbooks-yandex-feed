@@ -2,10 +2,8 @@ shop:
   name: "RC Books"
   company: "RC Books"
   url: "https://rcbooks.com"
-  currency: "Сапфиры"
+  currency: "RUB"
   currencies:
-    - id: "Сапфиры"
-      rate: "1"
     - id: "RUB"
       rate: "1"
 
