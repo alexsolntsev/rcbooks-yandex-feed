@@ -1,0 +1,90 @@
+shop:
+  name: "RC Books"
+  company: "RC Books"
+  url: "https://rcbooks.com"
+  currency: "Сапфиры"
+  currencies:
+    - id: "Сапфиры"
+      rate: "1"
+    - id: "RUB"
+      rate: "1"
+
+feed:
+  output_file: "output/yandex-books.yml"
+  parsed_file: "output/books_parsed.csv"
+  urls_file: "output/books_urls.csv"
+  report_file: "output/parsing_report.csv"
+  previous_feed_file: "output/yandex-books.yml"
+  min_valid_items: 10
+  max_drop_ratio: 0.30
+
+crawl:
+  user_agent: "Mozilla/5.0 (compatible; RCBooksYandexFeedBot/1.0)"
+  timeout_seconds: 20
+  delay_seconds: 0.4
+  max_pages_per_catalog: 300
+  # Add URL fragments that reliably indicate book detail pages.
+  book_url_patterns:
+    - "/product/"
+  # Exclude non-book pages that may match broad patterns.
+  exclude_url_patterns:
+    - "/author/"
+    - "/authors/"
+    - "/genre/"
+    - "/genres/"
+    - "/tag/"
+    - "/search"
+    - "/login"
+    - "/register"
+    - "/cart"
+    - "/product-category/"
+
+classification:
+  cheap_price_threshold: 10
+  new_days: 25
+  popular_rating_threshold: 4.5
+  popular_reviews_threshold: 20
+
+description_templates:
+  default: "Откройте карточку книги и посмотрите, станет ли эта история вашей следующей."
+  new: "Свежая история на RC Books — загляните в карточку и выберите, с чего начать."
+  popular: "Популярная книга RC Books — возможно, она станет вашей следующей историей."
+  cheap: "Небольшая по цене история, с которой легко вернуться к чтению."
+
+# CSS selectors are optional fallbacks. Prefer JSON-LD / embedded JSON / meta tags.
+selectors:
+  title:
+    - "h1"
+    - ".book-title"
+    - ".product-title"
+  author:
+    - ".author"
+    - ".book-author"
+    - "[itemprop='author']"
+  price:
+    # Рублёвая цена: <span class="pricev">1049 руб</span>
+    - ".pricev"
+    # Цена в сапфирах: <div class="sapphires">199 ...</div>
+    - ".sapphires"
+    - ".price"
+    - ".book-price"
+    - "[itemprop='price']"
+  image:
+    - "meta[property='og:image']"
+    - "[itemprop='image']"
+    - ".book-cover img"
+    - ".product-image img"
+    - ".img-box1"
+  description:
+    - "meta[name='description']"
+    - "meta[property='og:description']"
+    - "[itemprop='description']"
+    - ".book-description"
+  rating:
+    - "[itemprop='ratingValue']"
+    - ".rating"
+    - "average-rating-value"
+  reviews_count:
+    - "[itemprop='reviewCount']"
+    - ".reviews-count"
+    - "small[style*='font-size: 12px']"
