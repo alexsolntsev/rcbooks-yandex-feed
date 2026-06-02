@@ -1,0 +1,1042 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2026-06-02 23:25">
+  <shop>
+    <name>RC Books</name>
+    <company>RC Books</company>
+    <url>https://rcbooks.com</url>
+    <currencies>
+      <currency id="Сапфиры" rate="1"/>
+      <currency id="RUB" rate="1"/>
+      <currency id="SAPPHIRE" rate="1"/>
+    </currencies>
+    <categories>
+      <category id="1">Книги</category>
+    </categories>
+    <offers>
+      <offer id="270" available="true">
+        <url>https://rcbooks.com/product/10-sapfirov</url>
+        <price>10</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/05/10.png</picture>
+        <name>10 сапфиров - RC Books</name>
+        <description>Небольшая по цене история, с которой легко вернуться к чтению.</description>
+        <param name="reviews_count">0</param>
+        <param name="published_at">2024-11-05</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">true</param>
+        <param name="feed_group">cheap</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="422" available="true">
+        <url>https://rcbooks.com/product/1000-sapfirov</url>
+        <price>1000</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/05/1000.png</picture>
+        <name>1000 сапфиров - RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">0</param>
+        <param name="published_at">2024-05-16</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="279" available="true">
+        <url>https://rcbooks.com/product/200-sapfirov</url>
+        <price>200</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/05/200.png</picture>
+        <name>200 сапфиров - RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">0</param>
+        <param name="published_at">2024-11-05</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="421" available="true">
+        <url>https://rcbooks.com/product/2500-sapfirov</url>
+        <price>2500</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/05/2000.png</picture>
+        <name>2500 сапфиров - RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">0</param>
+        <param name="published_at">2024-05-16</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="277" available="true">
+        <url>https://rcbooks.com/product/75-sapfirov</url>
+        <price>75</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/05/75.png</picture>
+        <name>75 сапфиров - RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">0</param>
+        <param name="published_at">2024-11-05</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="43772" available="true">
+        <url>https://rcbooks.com/product/arkanum-sleduya-za-belym-krolikom-audio</url>
+        <price>399</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/05/arkanum_szbk_pryamoug-bez18-dlya-sajta-1.jpg</picture>
+        <name>Аудиокнига Арканум Следуя за Белым Кроликом — слушать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">210</param>
+        <param name="published_at">2025-05-14</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="37866" available="true">
+        <url>https://rcbooks.com/product/arkanum-v-pogone-za-belym-krolikom-epub</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/05/arkanum_szbk_pryamoug-bez18-dlya-sajta-1.jpg</picture>
+        <name>Книга Арканум Следуя за Белым Кроликом — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">240</param>
+        <param name="published_at">2025-03-28</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="71627" available="true">
+        <url>https://rcbooks.com/product/conquering-versailles-laughter-of-birds-text</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2026/05/sn_-smeh-pticz_pryamoug-18-sajt.png</picture>
+        <name>Книга Покоряя Версаль: Смех Птиц — читать онлайн на сайте RC Books</name>
+        <description>Свежая история на RC Books — загляните в карточку и выберите, с чего начать.</description>
+        <param name="reviews_count">2</param>
+        <param name="published_at">2026-05-22</param>
+        <param name="is_new">true</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">new</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="40004" available="true">
+        <url>https://rcbooks.com/product/czvetok-iz-ognya-tiamat-pod-zvezdnoj-tenyu-irkally-audio</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/01/cziot_-pzti-pryamoug-copy.jpeg</picture>
+        <name>Цветок из Огня Тиамат: Под звездной тенью Иркаллы [Гл. 3 из 3] - RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">32</param>
+        <param name="published_at">2025-09-04</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="20382" available="true">
+        <url>https://rcbooks.com/product/czvetok-iz-ognya-tiamat-pod-zvezdnoj-tenyu-irkally-gl-1-3</url>
+        <price>99</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/01/cziot_-pzti-pryamoug-copy.jpeg</picture>
+        <name>Книга Цветок из Огня Тиамат Под звездной тенью Иркаллы — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">21</param>
+        <param name="published_at">2025-01-24</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="17540" available="true">
+        <url>https://rcbooks.com/product/dracula-istoriya-lubvi-put-otvagi-audio-gl-1</url>
+        <price>1</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/12/dls_cover.jpg</picture>
+        <name>Аудиокнига Дракула История Любви Путь отваги — слушать онлайн на сайте RC Books</name>
+        <description>Небольшая по цене история, с которой легко вернуться к чтению.</description>
+        <param name="reviews_count">14</param>
+        <param name="published_at">2025-01-15</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">true</param>
+        <param name="feed_group">cheap</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="5415" available="true">
+        <url>https://rcbooks.com/product/dracula-istoriya-lubvi-put-otvagi-epub</url>
+        <price>99</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/12/dls_cover.jpg</picture>
+        <name>Книга Дракула История Любви Путь отваги — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">37</param>
+        <param name="published_at">2024-12-16</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="68038" available="true">
+        <url>https://rcbooks.com/product/drakula-istoriya-lyubvi-my-lord</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2026/02/dil_mojgosp_pryamoug18.png</picture>
+        <name>Книга Дракула История Любви Путь отваги — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">25</param>
+        <param name="published_at">2026-02-20</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="17555" available="true">
+        <url>https://rcbooks.com/product/drakula-istoriya-lyubvi-put-otvagi-audio-gl-1-4</url>
+        <price>149</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/12/dls_cover.jpg</picture>
+        <name>Аудиокнига Дракула История Любви Путь отваги — слушать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">15</param>
+        <param name="published_at">2025-01-15</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="646" available="true">
+        <url>https://rcbooks.com/product/fftf-official-audiobook</url>
+        <price>299</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/08/czvetok-iz-ognya-tiamat-rc-books-1.jpg</picture>
+        <name>Аудиокнига Цветок из Огня Тиамат — слушать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">24</param>
+        <param name="published_at">2024-08-26</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="205" available="true">
+        <url>https://rcbooks.com/product/fftf_official</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/08/czvetok-iz-ognya-tiamat-rc-books-1.jpg</picture>
+        <name>Книга Цветок из Огня Тиамат — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">29</param>
+        <param name="published_at">2024-10-05</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="64316" available="true">
+        <url>https://rcbooks.com/product/kali-zov-tmy-dyuzhina-audio</url>
+        <price>299</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/07/cover-1.jpg</picture>
+        <name>Кали. Зов Тьмы: Дюжина [Гл. 1-18 из 18] - RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">6</param>
+        <param name="published_at">2025-12-17</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="53608" available="true">
+        <url>https://rcbooks.com/product/kali-zov-tmy-dyuzhina-gl-1-18-iz-18</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/07/cover-1.jpg</picture>
+        <name>Книга Кали Зов Тьмы Дюжина — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">37</param>
+        <param name="published_at">2025-07-31</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="59533" available="true">
+        <url>https://rcbooks.com/product/kali-zov-tmy-kogda-mertvye-govoryat</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/10/when-dead-speak-cover.jpeg</picture>
+        <name>Книга Кали Зов Тьмы Когда Мертвые Говорят — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">26</param>
+        <param name="published_at">2025-08-10</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="59054" available="true">
+        <url>https://rcbooks.com/product/kali-zov-tmy-krug-krovi-audio</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/05/kalicover1.jpeg</picture>
+        <name>Кали. Зов Тьмы: Круг крови [Гл. 1-13 из 13] - RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">12</param>
+        <param name="published_at">2025-01-10</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="43559" available="true">
+        <url>https://rcbooks.com/product/kali-zov-tmy-krug-krovi-epub</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/05/kalicover1.jpeg</picture>
+        <name>Книга Кали Зов Тьмы Круг крови — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">62</param>
+        <param name="published_at">2025-12-05</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="5694" available="true">
+        <url>https://rcbooks.com/product/kali-zov-tmy-prokljatye-gl-1-iz-10</url>
+        <price>1</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/12/kzt-2.png</picture>
+        <name>Аудиокнига Кали Зов Тьмы Проклятые — слушать онлайн на сайте RC Books</name>
+        <description>Небольшая по цене история, с которой легко вернуться к чтению.</description>
+        <param name="reviews_count">59</param>
+        <param name="published_at">2024-12-18</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">true</param>
+        <param name="feed_group">cheap</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="64319" available="true">
+        <url>https://rcbooks.com/product/kali-zov-tmy-proklyatye-full-text</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/12/kzt-2.png</picture>
+        <name>Аудиокнига Кали Зов Тьмы Проклятые — слушать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">11</param>
+        <param name="published_at">2025-12-17</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="6656" available="true">
+        <url>https://rcbooks.com/product/kali-zov-tmy-proklyatye-gl-1-10</url>
+        <price>299</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/12/kzt-2.png</picture>
+        <name>Аудиокнига Кали Зов Тьмы Проклятые — слушать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">73</param>
+        <param name="published_at">2024-12-25</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="592" available="true">
+        <url>https://rcbooks.com/product/krovavyj-tron</url>
+        <price>1</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/08/krovavyj-tron-1.jpg</picture>
+        <name>Книга Песнь о Красном Ниле Кровавый трон — читать онлайн на сайте RC Books</name>
+        <description>Небольшая по цене история, с которой легко вернуться к чтению.</description>
+        <param name="reviews_count">193</param>
+        <param name="published_at">2024-03-07</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">true</param>
+        <param name="feed_group">cheap</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="38695" available="true">
+        <url>https://rcbooks.com/product/legenda-ivy-son-i-sol-audio</url>
+        <price>149</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/01/son-i-sol-pryamoug-vero-pascal.jpeg</picture>
+        <name>Легенда Ивы: Сон и Соль [Гл. 1-2 из 2] - RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">13</param>
+        <param name="published_at">2025-02-04</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="18724" available="true">
+        <url>https://rcbooks.com/product/legenda-ivy-son-i-sol-gl-1-2</url>
+        <price>99</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/01/son-i-sol-pryamoug-vero-pascal.jpeg</picture>
+        <name>Книга Легенда Ивы Сон и Соль — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">35</param>
+        <param name="published_at">2025-01-20</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="722" available="true">
+        <url>https://rcbooks.com/product/legenda-ivy-teplo-tvoei-dushi-1-2</url>
+        <price>1</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/11/li_teplo-td.jpg</picture>
+        <name>Легенда Ивы: Тепло твоей души. [Гл. 1-2] - RC Books</name>
+        <description>Небольшая по цене история, с которой легко вернуться к чтению.</description>
+        <param name="reviews_count">117</param>
+        <param name="published_at">2024-10-23</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">true</param>
+        <param name="feed_group">cheap</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="1037" available="true">
+        <url>https://rcbooks.com/product/legenda-ivy-teplo-tvoej-dushi-epub</url>
+        <price>49</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/11/li_teplo-td.jpg</picture>
+        <name>Книга Легенда Ивы Тепло твоей души — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">144</param>
+        <param name="published_at">2024-11-22</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="56446" available="true">
+        <url>https://rcbooks.com/product/lisya-busina-text</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/08/cover2.jpg</picture>
+        <name>Книга Эдемов сад Лисья бусина — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">21</param>
+        <param name="published_at">2025-08-26</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="47003" available="true">
+        <url>https://rcbooks.com/product/pesn-o-krasnom-nile-pod-tenju-zmeya</url>
+        <price>399</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/06/pokn_ptz_pryamoug.jpg</picture>
+        <name>Аудиокнига Песнь о Красном Ниле Под тенью Змея — слушать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">63</param>
+        <param name="published_at">2025-06-06</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="42147" available="true">
+        <url>https://rcbooks.com/product/pesn-o-krasnom-nile-zabytye-kniga-1-zov-proshlogo</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/04/pokn_zabytye1_pryamoug18-1.jpg</picture>
+        <name>Книга Песнь о Красном Ниле Забытые Книга 1 Зов прошлого — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">65</param>
+        <param name="published_at">2025-04-27</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="54091" available="true">
+        <url>https://rcbooks.com/product/pesn-o-krasnom-nile-zabytye-kniga-1-zov-proshlogo-audio</url>
+        <price>299</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/04/pokn_zabytye1_pryamoug18-1.jpg</picture>
+        <name>Песнь о Красном Ниле: Забытые. Книга 1: Зов прошлого. [Гл. 1-11 из 11] - RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">13</param>
+        <param name="published_at">2025-06-08</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="60971" available="true">
+        <url>https://rcbooks.com/product/pesn-o-krasnom-nile-zabytye-kniga-2-echo-buduchego-audio</url>
+        <price>299</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/07/pokn_zabytye2_pryamougs18-copy.png</picture>
+        <name>Песнь о Красном Ниле: Забытые. Книга 2: Эхо Будущего. [Гл. 1-9 из 9] - RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">7</param>
+        <param name="published_at">2025-10-29</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="53401" available="true">
+        <url>https://rcbooks.com/product/pesn-o-krasnom-nile-zabytye-kniga-2-echo-buduschego</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/07/pokn_zabytye2_pryamougs18-copy.png</picture>
+        <name>Книга Песнь о Красном Ниле Забытые Книга 2 Эхо Будущего — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">22</param>
+        <param name="published_at">2025-07-28</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="63160" available="true">
+        <url>https://rcbooks.com/product/psi-postskriptum-audiobook</url>
+        <price>399</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/04/psi_postskriptum_pryamougsoczseti.png</picture>
+        <name>Пси: Постскриптум [Гл. 1-15 из 15] - RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">17</param>
+        <param name="published_at">2025-11-26</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="41111" available="true">
+        <url>https://rcbooks.com/product/psy-ps-chapters-1-12</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/04/psi_postskriptum_pryamougsoczseti.png</picture>
+        <name>Книга Пси Постскриптум — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">96</param>
+        <param name="published_at">2025-04-18</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="66590" available="true">
+        <url>https://rcbooks.com/product/razbitoe-serdce-astrei-ocharovanie-tmy</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2026/02/rsa-ocharovanie-tmy_pryamoug18.png</picture>
+        <name>Аудиокнига СЕКРЕТ НЕБЕС КОЛЛЕДЖ Книга 2 — слушать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">57</param>
+        <param name="published_at">2026-02-02</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="66794" available="true">
+        <url>https://rcbooks.com/product/razbitoe-serdce-astrei-ocharovanie-tmy-audio</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2026/02/rsa-ocharovanie-tmy_pryamoug18.png</picture>
+        <name>Аудиокнига СЕКРЕТ НЕБЕС КОЛЛЕДЖ Книга 2 — слушать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">15</param>
+        <param name="published_at">2026-04-02</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="69052" available="true">
+        <url>https://rcbooks.com/product/razbitoe-serdcze-astrei-lechebnica</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2026/03/rsa_lechebnicza_pryamoug18.png</picture>
+        <name>Книга Разбитое Сердце Астреи Лечебница — читать онлайн на сайте RC Books</name>
+        <description>Свежая история на RC Books — загляните в карточку и выберите, с чего начать.</description>
+        <param name="reviews_count">14</param>
+        <param name="published_at">2026-06-03</param>
+        <param name="is_new">true</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">new</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="71628" available="true">
+        <url>https://rcbooks.com/product/razbitoe-serdcze-astrei-lechebnicza-audio</url>
+        <price>299</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2026/03/rsa_lechebnicza_pryamoug18.png</picture>
+        <name>Книга Разбитое Сердце Астреи Лечебница — читать онлайн на сайте RC Books</name>
+        <description>Свежая история на RC Books — загляните в карточку и выберите, с чего начать.</description>
+        <param name="reviews_count">4</param>
+        <param name="published_at">2026-05-22</param>
+        <param name="is_new">true</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">new</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="49724" available="true">
+        <url>https://rcbooks.com/product/sekret-nebes-desyaty-krug-audio</url>
+        <price>299</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/06/sn_desyatyj-krug_pryamoug.jpg</picture>
+        <name>Аудиокнига Секрет Небес Десятый Круг Книга 1 — слушать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">51</param>
+        <param name="published_at">2025-06-27</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="56855" available="true">
+        <url>https://rcbooks.com/product/sekret-nebes-desyatyj-krug-audio-kniga-2</url>
+        <price>299</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/06/sn_desyatyj-krug_pryamoug.jpg</picture>
+        <name>Аудиокнига Секрет Небес Десятый Круг Книга 2 — слушать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">40</param>
+        <param name="published_at">2025-02-09</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="64320" available="true">
+        <url>https://rcbooks.com/product/sekret-nebes-kolledzh-full-text</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/12/kolledzh-kniga.png</picture>
+        <name>Аудиокнига СЕКРЕТ НЕБЕС КОЛЛЕДЖ Книга 2 — слушать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">28</param>
+        <param name="published_at">2025-12-17</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="1081" available="true">
+        <url>https://rcbooks.com/product/sekret-nebes-kolledzh-kniga-1-gl-4-18</url>
+        <price>399</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/11/kolledzh-pryamoug_kniga1.png</picture>
+        <name>Аудиокнига Секрет Небес Колледж Книга 1 — слушать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">299</param>
+        <param name="published_at">2024-11-29</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="23740" available="true">
+        <url>https://rcbooks.com/product/sekret-nebes-kolledzh-kniga-2</url>
+        <price>399</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/02/kolledzh-pryamoug_kniga2.png</picture>
+        <name>Аудиокнига СЕКРЕТ НЕБЕС КОЛЛЕДЖ Книга 2 — слушать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">206</param>
+        <param name="published_at">2025-06-02</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="44259" available="true">
+        <url>https://rcbooks.com/product/sekret-nebes-krov-neon</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/05/preview-1.jpg</picture>
+        <name>Книга Секрет Небес Кровь и Неон — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">91</param>
+        <param name="published_at">2025-05-19</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="57794" available="true">
+        <url>https://rcbooks.com/product/sekret-nebes-otkrovenie-audio</url>
+        <price>299</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/01/otkrovenie-pryamoug.png</picture>
+        <name>Книга Секрет Небес Откровение — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">9</param>
+        <param name="published_at">2025-09-16</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="18705" available="true">
+        <url>https://rcbooks.com/product/sekret-nebes-otkrovenie-gl-1-21</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/01/otkrovenie-pryamoug.png</picture>
+        <name>Книга Секрет Небес Откровение — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">60</param>
+        <param name="published_at">2025-01-20</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="62109" available="true">
+        <url>https://rcbooks.com/product/sekret-nebes-rekviem-okovy-i-tsepi-audio</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/11/snr_oicz_pryamoug18-copy.png</picture>
+        <name>Секрет Небес. Реквием: Оковы и цепи [Гл. 1-4 из 4] - RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">27</param>
+        <param name="published_at">2025-12-11</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="61844" available="true">
+        <url>https://rcbooks.com/product/sekret-nebes-requiem-okovy-i-tsepi</url>
+        <price>99</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/11/snr_oicz_pryamoug18-copy.png</picture>
+        <name>Книга Секрет Небес Реквием Оковы и цепи — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">59</param>
+        <param name="published_at">2025-10-11</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="62894" available="true">
+        <url>https://rcbooks.com/product/sekret-nebes-shadows-between-us</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2026/02/sn_-tmn_p-18-1.jpg</picture>
+        <name>Книга Секрет Небес Тени между нами — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">22</param>
+        <param name="published_at">2025-11-21</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="317" available="true">
+        <url>https://rcbooks.com/product/sekret-nebes-yabloko-razdora</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/08/sekret-nebes-yabloko-razdora-epub-rc-books1.jpg</picture>
+        <name>Книга Секрет Небес Яблоко Раздора — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">45</param>
+        <param name="published_at">2024-12-05</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="628" available="true">
+        <url>https://rcbooks.com/product/sekret-nebes-yabloko-razdora-audio</url>
+        <price>399</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2024/08/sekret-nebes-yabloko-razdora-epub-rc-books1.jpg</picture>
+        <name>Аудиокнига Секрет Небес Яблоко Раздора — слушать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">65</param>
+        <param name="published_at">2024-08-18</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="49025" available="true">
+        <url>https://rcbooks.com/product/teni-sentfora-cherniy-moroznik</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/06/ts_chm_pryamoug-1.png</picture>
+        <name>Книга Тени Сентфора Черный Морозник — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">22</param>
+        <param name="published_at">2025-06-21</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="68348" available="true">
+        <url>https://rcbooks.com/product/teni-sentfora-prokljatie-pervogo</url>
+        <price>399</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2026/02/ts_pp_pryamoug.png</picture>
+        <name>Тени Сентфора: Проклятие Первого [Гл. 1-27 из 27] - RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">22</param>
+        <param name="published_at">2026-02-24</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="69531" available="true">
+        <url>https://rcbooks.com/product/teni-sentfora-proklyatie-pervogo-text</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2026/02/ts_pp_pryamoug.png</picture>
+        <name>Книга Тени Сентфора Проклятие Первого — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">8</param>
+        <param name="published_at">2026-03-13</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="41483" available="true">
+        <url>https://rcbooks.com/product/teodora-horoshij-soldat-audio-vol-2</url>
+        <price>399</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/04/teo_-hor-sol_pryamoug-copy.png</picture>
+        <name>Аудиокнига Теодора Хороший солдат Книга 2 — слушать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">24</param>
+        <param name="published_at">2025-04-21</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="24670" available="true">
+        <url>https://rcbooks.com/product/teodora-horoshij-soldat-gl-1-2</url>
+        <price>1</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/02/teo_-hor-sol_pryamoug.jpg</picture>
+        <name>Теодора: Хороший солдат [Гл. 1-2 из 15] - RC Books</name>
+        <description>Небольшая по цене история, с которой легко вернуться к чтению.</description>
+        <param name="reviews_count">49</param>
+        <param name="published_at">2025-08-02</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">true</param>
+        <param name="feed_group">cheap</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="24666" available="true">
+        <url>https://rcbooks.com/product/teodora-horoshiy-soldat-gl-1-15</url>
+        <price>399</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/02/teo_-hor-sol_pryamoug.jpg</picture>
+        <name>Аудиокнига Теодора Хороший солдат — слушать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">33</param>
+        <param name="published_at">2025-08-02</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="59057" available="true">
+        <url>https://rcbooks.com/product/teodora-poslednee-vospominanie-o-tebe</url>
+        <price>99</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/10/teo_-pvot_pryamoug.png</picture>
+        <name>Книга Теодора Последнее Воспоминание о Тебе — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">20</param>
+        <param name="published_at">2025-01-10</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="64030" available="true">
+        <url>https://rcbooks.com/product/teodora-poslednee-vospominanie-o-tebe-audio</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/10/teo_-pvot_pryamoug.png</picture>
+        <name>Теодора: Последнее Воспоминание о Тебе [Гл. 1-5 из 5] - RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">8</param>
+        <param name="published_at">2025-10-12</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="70073" available="true">
+        <url>https://rcbooks.com/product/ya-ohochus-na-tebya-svyazannye-sudboj-audio</url>
+        <price>299</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/03/yaont_svyazsudb_pryamoug_na-sajt-1.jpg</picture>
+        <name>Книга Я Охочусь на Тебя Связанные Судьбой — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">8</param>
+        <param name="published_at">2026-03-25</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+      <offer id="35503" available="true">
+        <url>https://rcbooks.com/product/ya-ohochus-na-tebya-svyazannye-sudboy-1-2-iz-21</url>
+        <price>199</price>
+        <currencyId>SAPPHIRE</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://rcbooks.com/wp-content/uploads/2025/03/yaont_svyazsudb_pryamoug_na-sajt-1.jpg</picture>
+        <name>Книга Я Охочусь на Тебя Связанные Судьбой — читать онлайн на сайте RC Books</name>
+        <description>Откройте карточку книги и посмотрите, станет ли эта история вашей следующей.</description>
+        <param name="reviews_count">54</param>
+        <param name="published_at">2025-03-17</param>
+        <param name="is_new">false</param>
+        <param name="is_popular">false</param>
+        <param name="is_cheap">false</param>
+        <param name="feed_group">default</param>
+        <param name="priority">50</param>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>
