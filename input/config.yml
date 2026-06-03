@@ -51,8 +51,8 @@ description_templates:
 
 product_exclusions:
   title_regex:
-    - "^\s*\d+\s+сапфир(?:ов|а|ы)?\s*[-–—]\s*RC Books\s*$"
-    - "^\s*\d+\s+sapphire(?:s)?\s*[-–—]\s*RC Books\s*$"
+    - '^\s*\d+\s+сапфир(?:ов|а|ы)?\s*[-–—]\s*RC Books\s*$'
+    - '^\s*\d+\s+sapphire(?:s)?\s*[-–—]\s*RC Books\s*$'
 
 # CSS selectors are optional fallbacks. Prefer JSON-LD / embedded JSON / meta tags.
 selectors:
