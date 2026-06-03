@@ -13,6 +13,7 @@ SCRIPTS = [
     "06_generate_csv.py",
     "07_generate_catalog_csv.py",
     "08_generate_special_csv.py",
+    "09_generate_google_shopping.py",
     "05_validate_feed.py",
 ]
 

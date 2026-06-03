@@ -39,6 +39,7 @@ jobs:
           cp output/yandex-books.csv public/yandex-books.csv || true
           cp output/yandex-books-catalog.csv public/yandex-books-catalog.csv || true
           cp output/yandex-books-special.csv public/yandex-books-special.csv || true
+          cp output/yandex-books-google.xml public/yandex-books-google.xml || true
           cp output/parsing_report.csv public/parsing_report.csv || true
           cp output/books_parsed.csv public/books_parsed.csv || true
 
