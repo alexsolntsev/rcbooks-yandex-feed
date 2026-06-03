@@ -11,6 +11,7 @@ SCRIPTS = [
     "03_apply_overrides.py",
     "04_generate_yml.py",
     "06_generate_csv.py",
+    "07_generate_catalog_csv.py",
     "05_validate_feed.py",
 ]
 

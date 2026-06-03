@@ -37,6 +37,7 @@ jobs:
           mkdir -p public
           cp output/yandex-books.yml public/yandex-books.yml
           cp output/yandex-books.csv public/yandex-books.csv || true
+          cp output/yandex-books-catalog.csv public/yandex-books-catalog.csv || true
           cp output/parsing_report.csv public/parsing_report.csv || true
           cp output/books_parsed.csv public/books_parsed.csv || true
 
