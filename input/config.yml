@@ -2,10 +2,8 @@ shop:
   name: "RC Books"
   company: "RC Books"
   url: "https://rcbooks.com"
-  currency: "Сапфиры"
+  currency: "RUB"
   currencies:
-    - id: "Сапфиры"
-      rate: "1"
     - id: "RUB"
       rate: "1"
 
@@ -44,6 +42,13 @@ classification:
   new_days: 25
   popular_rating_threshold: 4.5
   popular_reviews_threshold: 20
+
+product_exclusions:
+  # Исключаем страницы покупки пакетов внутренней валюты, например:
+  # "10 сапфиров - RC Books", "100 сапфиров – RC Books".
+  title_regex:
+    - "^\\s*\\d+\\s+сапфир(?:ов|а|ы)?\\s*[-–—]\\s*RC Books\\s*$"
+    - "^\\s*\\d+\\s+sapphire(?:s)?\\s*[-–—]\\s*RC Books\\s*$"
 
 description_templates:
   default: "Откройте карточку книги и посмотрите, станет ли эта история вашей следующей."

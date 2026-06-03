@@ -136,6 +136,8 @@ class Book:
     price: str = ""
     old_price: str = ""
     currency: str = "RUB"
+    internal_currency: str = ""
+    sapphires_price: str = ""
     image_url: str = ""
     category: str = "Книги"
     category_id: str = "1"

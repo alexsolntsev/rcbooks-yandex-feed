@@ -15,6 +15,8 @@ OVERRIDE_MAP = {
     "force_author": "author",
     "force_price": "price",
     "force_currency": "currency",
+    "force_internal_currency": "internal_currency",
+    "force_sapphires_price": "sapphires_price",
     "force_image_url": "image_url",
     "force_is_new": "is_new",
     "force_is_popular": "is_popular",
@@ -45,6 +47,16 @@ def main() -> None:
                         book[dst] = "true" if parsed else "false"
                 else:
                     book[dst] = val
+        # currencyId в YML должен оставаться валидной валютой для Яндекса.
+        # Если вручную указали сапфиры, сохраняем это как internal_currency,
+        # но currencyId всё равно ставим RUB.
+        if clean_text(book.get("currency", "")).lower() in {"сапфиры", "сапфир", "sapphire", "sapphires"}:
+            book["internal_currency"] = "sapphire"
+            book["sapphires_price"] = book.get("sapphires_price") or book.get("price", "")
+            book["currency"] = "RUB"
+        elif not book.get("currency"):
+            book["currency"] = "RUB"
+
         # Update feed_group after forced labels.
         if book.get("is_new") == "true":
             book["feed_group"] = "new"

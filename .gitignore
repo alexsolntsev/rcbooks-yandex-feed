@@ -179,3 +179,10 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# RC Books feed generator runtime files
+.venv/
+output/*.csv
+output/*.xml
+output/*.yml
+!output/.gitkeep

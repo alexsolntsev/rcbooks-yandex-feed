@@ -65,7 +65,6 @@ def extract_image_from_value(value) -> str:
         return ""
 
     if isinstance(value, dict):
-        # Сначала явные поля картинки. @id используем только как запасной вариант.
         for key in ["url", "contentUrl", "thumbnailUrl", "@id"]:
             result = extract_image_from_value(value.get(key))
             if result:
@@ -76,7 +75,6 @@ def extract_image_from_value(value) -> str:
     if not text or text.startswith("{") or text.startswith("["):
         return ""
 
-    # Не считаем страницy товара картинкой, если это не файл изображения.
     lower = text.lower().split("?")[0]
     looks_like_image = lower.endswith((".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg"))
     if text.startswith(("http://", "https://", "http:/", "https:/")) and not looks_like_image:
@@ -192,11 +190,12 @@ def clean_image_url(value: Any) -> str:
     return value
 
 
-def normalize_currency_id(value: Any, default: str = "SAPPHIRE") -> str:
-    """Возвращает currencyId для YML-фида.
+def normalize_currency_id(value: Any, default: str = "RUB") -> str:
+    """Возвращает валидный currencyId для YML.
 
-    По умолчанию используем SAPPHIRE для внутренней валюты сайта.
-    Рублёвые цены определяем по тексту/селектору или задаём через overrides.csv.
+    Для Яндекс Директа не используем внутренние валюты типа "сапфиры"
+    в currencyId: такие товары могут стать невалидными.
+    Поэтому currencyId всегда приводим к RUB, если явно не задана валидная валюта.
     """
     text = clean_text(value).upper()
     if not text:
@@ -208,12 +207,12 @@ def normalize_currency_id(value: Any, default: str = "SAPPHIRE") -> str:
         "RUR": "RUB",
         "RUB": "RUB",
         "₽": "RUB",
-        "SAPPHIRE": "SAPPHIRE",
-        "SAPPHIRES": "SAPPHIRE",
-        "САПФИР": "SAPPHIRE",
-        "САПФИРЫ": "SAPPHIRE",
+        "САПФИР": "RUB",
+        "САПФИРЫ": "RUB",
+        "SAPPHIRE": "RUB",
+        "SAPPHIRES": "RUB",
     }
-    return mapping.get(text, text)
+    return mapping.get(text, default)
 
 
 def selector_text_with_selector(soup: BeautifulSoup, selectors: List[str]) -> tuple[str, str]:
@@ -225,19 +224,30 @@ def selector_text_with_selector(soup: BeautifulSoup, selectors: List[str]) -> tu
     return "", ""
 
 
-def detect_currency_from_price(raw_price: str, selector: str, default_currency: str) -> str:
-    """Определяет валюту по тексту цены и селектору, из которого цена была взята."""
+def detect_internal_currency_from_price(raw_price: str, selector: str) -> str:
+    """Определяет внутренний тип цены для доп. параметров фида."""
     text = clean_text(raw_price).lower()
     sel = clean_text(selector).lower()
 
-    if "руб" in text or "₽" in text or "pricev" in sel:
-        return "RUB"
-
     if "sapphire" in text or "сапф" in text or "sapphires" in sel:
-        return "SAPPHIRE"
+        return "sapphire"
 
-    return normalize_currency_id(default_currency, "SAPPHIRE")
+    if "руб" in text or "₽" in text or "pricev" in sel:
+        return "rub"
 
+    return ""
+
+
+def is_excluded_product_title(title: str, config: Dict[str, Any]) -> bool:
+    """Исключает не-книжные товары, например пакеты сапфиров."""
+    title = clean_text(title)
+    for pattern in config.get("product_exclusions", {}).get("title_regex", []):
+        try:
+            if re.search(pattern, title, flags=re.IGNORECASE):
+                return True
+        except re.error:
+            continue
+    return False
 
 def find_embedded_ids(html: str) -> str:
     patterns = [
@@ -307,7 +317,7 @@ def description_for(book: Book, config: Dict[str, Any]) -> str:
 
 def parse_book(url: str, source: str, config: Dict[str, Any]) -> Book:
     html = fetch(url, config)
-    book = Book(offer_id=stable_id_from_url(url), url=normalize_url(url), currency=normalize_currency_id(config["shop"].get("currency", "SAPPHIRE")), source=source)
+    book = Book(offer_id=stable_id_from_url(url), url=normalize_url(url), currency=normalize_currency_id(config["shop"].get("currency", "RUB")), source=source)
     errors = []
     if not html:
         book.errors = "fetch_failed"
@@ -338,22 +348,25 @@ def parse_book(url: str, source: str, config: Dict[str, Any]) -> Book:
     )
     book.title = title
 
+    if is_excluded_product_title(book.title, config):
+        book.errors = "excluded_title_sapphires"
+        return book
+
     book.author = first_value(
         author.get("name") if isinstance(author, dict) else author,
         brand.get("name") if isinstance(brand, dict) else brand,
         selector_text(soup, selectors.get("author", [])),
     )
     # Цена может быть в сапфирах (.sapphires) или рублях (.pricev).
-    # Для YML важно сохранить и число, и currencyId.
+    # В currencyId для Директа всегда отдаём валидную валюту RUB,
+    # а внутреннюю валюту сохраняем отдельными param.
     selector_price, price_selector = selector_text_with_selector(soup, selectors.get("price", []))
     raw_price = first_value(offers.get("price"), selector_price)
     book.price = extract_number(parse_price(raw_price))
-
-    offer_currency = offers.get("priceCurrency") if isinstance(offers, dict) else ""
-    if offer_currency:
-        book.currency = normalize_currency_id(offer_currency, book.currency)
-    else:
-        book.currency = detect_currency_from_price(raw_price, price_selector, book.currency)
+    book.currency = "RUB"
+    book.internal_currency = detect_internal_currency_from_price(raw_price, price_selector)
+    if book.internal_currency == "sapphire":
+        book.sapphires_price = book.price
     # В JSON-LD поле image может быть строкой, списком или объектом вида
     # {"@id": "..."} / {"url": "..."}. Сначала аккуратно достаём URL,
     # затем fallback на og:image/twitter:image и CSS-селекторы из config.yml.

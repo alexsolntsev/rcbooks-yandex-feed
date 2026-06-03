@@ -37,7 +37,7 @@ def main() -> None:
         if oid in ids:
             duplicate_ids += 1
         ids.add(oid)
-        if not any(e in row_errors for e in ["missing_title", "missing_price", "missing_image", "missing_url"]):
+        if not any(e in row_errors for e in ["missing_title", "missing_price", "missing_image", "missing_url", "excluded_title_sapphires"]):
             valid_rows.append(b)
 
     offers = count_offers(yml_path)

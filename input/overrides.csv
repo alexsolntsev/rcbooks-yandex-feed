@@ -1,3 +1,3 @@
-url,force_offer_id,force_title,force_author,force_price,force_currency,force_image_url,force_is_new,force_is_popular,force_is_cheap,exclude,custom_description,priority,comment
-https://rcbooks.com/product/kali-zov-tmy-proklyatye,book_kali-zov-tmy-proklyatye,Купить бумажную книгу Кали Зов Тьмы Проклятые — заказать на сайте RC Books,,1049,RUB,https://rcbooks.com/wp-content/uploads/2025/12/kztp.png,,,,,,,
-https://rcbooks.com/product/sekret-nebes-kolledzh,book_sekret-nebes-kolledzh,Купить бумажную книгу Секрет Небес Колледж — заказать на сайте RC Books,,1049,RUB,https://rcbooks.com/wp-content/uploads/2025/12/snk.png,,,,,,,
+url,force_offer_id,force_title,force_author,force_price,force_currency,force_internal_currency,force_sapphires_price,force_image_url,force_is_new,force_is_popular,force_is_cheap,exclude,custom_description,priority,comment
+https://rcbooks.com/product/kali-zov-tmy-proklyatye,book_kali-zov-tmy-proklyatye,Купить бумажную книгу Кали Зов Тьмы Проклятые — заказать на сайте RC Books,,1049,RUB,,,https://rcbooks.com/wp-content/uploads/2025/12/kztp.png,,,,,,,
+https://rcbooks.com/product/sekret-nebes-kolledzh,book_sekret-nebes-kolledzh,Купить бумажную книгу Секрет Небес Колледж — заказать на сайте RC Books,,1049,RUB,,,https://rcbooks.com/wp-content/uploads/2025/12/snk.png,,,,,,,
