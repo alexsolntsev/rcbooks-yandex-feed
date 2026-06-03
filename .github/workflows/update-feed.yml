@@ -37,6 +37,8 @@ jobs:
           cp output/yandex-books.yml public/yandex-books.yml
           cp output/parsing_report.csv public/parsing_report.csv || true
           cp output/books_parsed.csv public/books_parsed.csv || true
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"   
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3

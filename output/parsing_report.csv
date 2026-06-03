@@ -1,0 +1,9 @@
+metric,value
+parsed_rows,66
+valid_rows,64
+offers_in_yml,64
+duplicate_offer_ids,0
+new_books,3
+popular_books,0
+cheap_books,6
+error_missing_price,2
