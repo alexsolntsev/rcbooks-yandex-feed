@@ -9,6 +9,7 @@ shop:
 
 feed:
   output_file: "output/yandex-books.yml"
+  csv_output_file: "output/yandex-books.csv"
   parsed_file: "output/books_parsed.csv"
   urls_file: "output/books_urls.csv"
   report_file: "output/parsing_report.csv"
@@ -51,8 +52,8 @@ description_templates:
 
 product_exclusions:
   title_regex:
-    - '^\s*\d+\s+сапфир(?:ов|а|ы)?\s*[-–—]\s*RC Books\s*$'
-    - '^\s*\d+\s+sapphire(?:s)?\s*[-–—]\s*RC Books\s*$'
+    - "^\s*\d+\s+сапфир(?:ов|а|ы)?\s*[-–—]\s*RC Books\s*$"
+    - "^\s*\d+\s+sapphire(?:s)?\s*[-–—]\s*RC Books\s*$"
 
 # CSS selectors are optional fallbacks. Prefer JSON-LD / embedded JSON / meta tags.
 selectors:

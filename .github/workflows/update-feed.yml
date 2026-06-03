@@ -3,7 +3,6 @@ name: Update Yandex Feed
 on:
   workflow_dispatch:
   schedule:
-    # Daily at 05:00 UTC. Adjust if needed.
     - cron: "0 5 * * *"
 
 permissions:
@@ -14,6 +13,7 @@ permissions:
 jobs:
   build-feed:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -29,28 +29,29 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run feed pipeline
-        run: python scripts/run_pipeline.py
+        run: |
+          python scripts/run_pipeline.py
 
       - name: Prepare Pages artifact
         run: |
           mkdir -p public
           cp output/yandex-books.yml public/yandex-books.yml
+          cp output/yandex-books.csv public/yandex-books.csv || true
           cp output/parsing_report.csv public/parsing_report.csv || true
           cp output/books_parsed.csv public/books_parsed.csv || true
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"   
 
-      - name: Upload GitHub Pages artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: public
 
-  deploy-pages:
+  deploy:
     needs: build-feed
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
