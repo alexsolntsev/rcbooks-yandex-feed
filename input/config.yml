@@ -43,18 +43,16 @@ classification:
   popular_rating_threshold: 4.5
   popular_reviews_threshold: 20
 
-product_exclusions:
-  # Исключаем страницы покупки пакетов внутренней валюты, например:
-  # "10 сапфиров - RC Books", "100 сапфиров – RC Books".
-  title_regex:
-    - "^\\s*\\d+\\s+сапфир(?:ов|а|ы)?\\s*[-–—]\\s*RC Books\\s*$"
-    - "^\\s*\\d+\\s+sapphire(?:s)?\\s*[-–—]\\s*RC Books\\s*$"
-
 description_templates:
   default: "Откройте карточку книги и посмотрите, станет ли эта история вашей следующей."
   new: "Свежая история на RC Books — загляните в карточку и выберите, с чего начать."
   popular: "Популярная книга RC Books — возможно, она станет вашей следующей историей."
   cheap: "Небольшая по цене история, с которой легко вернуться к чтению."
+
+product_exclusions:
+  title_regex:
+    - "^\s*\d+\s+сапфир(?:ов|а|ы)?\s*[-–—]\s*RC Books\s*$"
+    - "^\s*\d+\s+sapphire(?:s)?\s*[-–—]\s*RC Books\s*$"
 
 # CSS selectors are optional fallbacks. Prefer JSON-LD / embedded JSON / meta tags.
 selectors:
@@ -74,12 +72,24 @@ selectors:
     - ".price"
     - ".book-price"
     - "[itemprop='price']"
-  image:
+  image_url:
     - "meta[property='og:image']"
-    - "[itemprop='image']"
+    - "meta[name='twitter:image']"
+    - "link[rel='image_src']"
+    - ".woocommerce-product-gallery__image img"
+    - "img.wp-post-image"
     - ".book-cover img"
     - ".product-image img"
-    - ".img-box1"
+    - ".img-box1 img"
+  image:
+    - "meta[property='og:image']"
+    - "meta[name='twitter:image']"
+    - "link[rel='image_src']"
+    - ".woocommerce-product-gallery__image img"
+    - "img.wp-post-image"
+    - ".book-cover img"
+    - ".product-image img"
+    - ".img-box1 img"
   description:
     - "meta[name='description']"
     - "meta[property='og:description']"

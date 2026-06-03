@@ -16,6 +16,20 @@ def param(name: str, value: str) -> str:
     return f'        <param name="{xml(name)}">{xml(str(value))}</param>\n'
 
 
+def has_blocking_error(errors: str) -> bool:
+    if not errors:
+        return False
+    blocking = {
+        "missing_title",
+        "missing_price",
+        "missing_image",
+        "missing_url",
+        "excluded_title_sapphires",
+        "fetch_failed",
+    }
+    return any(e in blocking for e in errors.split(";"))
+
+
 def main() -> None:
     config = load_config()
     books = read_csv(ROOT / config["feed"]["parsed_file"])
@@ -23,8 +37,6 @@ def main() -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
     shop = config["shop"]
     default_currency = "RUB"
-
-    currencies = {"RUB": "1"}
 
     lines = []
     lines.append('<?xml version="1.0" encoding="UTF-8"?>')
@@ -34,8 +46,7 @@ def main() -> None:
     lines.append(f"    <company>{xml(shop.get('company', 'RC Books'))}</company>")
     lines.append(f"    <url>{xml(shop.get('url', 'https://rcbooks.com'))}</url>")
     lines.append("    <currencies>")
-    for cid, rate in currencies.items():
-        lines.append(f'      <currency id="{xml(cid)}" rate="{xml(rate)}"/>')
+    lines.append('      <currency id="RUB" rate="1"/>')
     lines.append("    </currencies>")
     lines.append("    <categories>")
     lines.append('      <category id="1">Книги</category>')
@@ -43,12 +54,7 @@ def main() -> None:
     lines.append("    <offers>")
 
     for b in books:
-        if b.get("errors") and (
-            "missing_title" in b["errors"]
-            or "missing_price" in b["errors"]
-            or "missing_image" in b["errors"]
-            or "excluded_title_sapphires" in b["errors"]
-        ):
+        if has_blocking_error(b.get("errors", "")):
             continue
         offer_id = xml(b.get("offer_id", ""))[:100]
         if not offer_id:
@@ -59,7 +65,7 @@ def main() -> None:
         lines.append(f"        <price>{xml(b.get('price', ''))}</price>")
         if b.get("old_price"):
             lines.append(f"        <oldprice>{xml(b.get('old_price', ''))}</oldprice>")
-        lines.append(f"        <currencyId>{xml('RUB')}</currencyId>")
+        lines.append(f"        <currencyId>{default_currency}</currencyId>")
         lines.append("        <categoryId>1</categoryId>")
         lines.append(f"        <picture>{xml(b.get('image_url', ''))}</picture>")
         lines.append(f"        <name>{xml(b.get('title', ''))}</name>")
@@ -67,7 +73,20 @@ def main() -> None:
             lines.append(f"        <vendor>{xml(b.get('author', ''))}</vendor>")
         lines.append(f"        <description>{xml(b.get('description', ''))}</description>")
         extra = ""
-        for key in ["genre", "rating", "reviews_count", "views_count", "published_at", "internal_currency", "sapphires_price", "is_new", "is_popular", "is_cheap", "feed_group", "priority"]:
+        for key in [
+            "internal_currency",
+            "sapphires_price",
+            "genre",
+            "rating",
+            "reviews_count",
+            "views_count",
+            "published_at",
+            "is_new",
+            "is_popular",
+            "is_cheap",
+            "feed_group",
+            "priority",
+        ]:
             extra += param(key, b.get(key, ""))
         if extra:
             lines.append(extra.rstrip("\n"))

@@ -46,13 +46,11 @@ def extract_number(value):
 def extract_image_from_value(value) -> str:
     """
     Достаёт URL картинки из разных форматов:
-    - обычная строка
-    - список картинок
+    - строка
+    - список
     - JSON-LD объект {"url": "..."} / {"contentUrl": "..."} / {"@id": "..."}
 
-    Важно: в JSON-LD @id иногда указывает не на картинку, а на страницу товара.
-    Такие значения отбрасываем, чтобы не получать image_url вида
-    https://rcbooks.com/product/{'@id': '...'}.
+    @id часто указывает на страницу товара, а не на изображение — такие URL отбрасываем.
     """
     if not value:
         return ""
@@ -76,7 +74,7 @@ def extract_image_from_value(value) -> str:
         return ""
 
     lower = text.lower().split("?")[0]
-    looks_like_image = lower.endswith((".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg"))
+    looks_like_image = lower.endswith((".jpg", ".jpeg", ".png", ".webp", ".gif"))
     if text.startswith(("http://", "https://", "http:/", "https:/")) and not looks_like_image:
         if "/product/" in lower or "/book/" in lower or "/books/" in lower:
             return ""
@@ -121,16 +119,46 @@ def meta_content(soup: BeautifulSoup, *keys: str) -> str:
     return ""
 
 
+def _image_value_from_tag(tag) -> str:
+    """Берёт лучшую ссылку на изображение из img/meta/link или вложенного img."""
+    if not tag:
+        return ""
+
+    if tag.name == "meta" and tag.get("content"):
+        return clean_text(tag.get("content"))
+
+    if tag.name == "link" and tag.get("href"):
+        return clean_text(tag.get("href"))
+
+    img = tag if tag.name == "img" else tag.find("img")
+    if img:
+        # WooCommerce часто хранит большую обложку в data-large_image.
+        for attr in [
+            "data-large_image",
+            "data-full",
+            "data-src",
+            "data-lazy-src",
+            "data-original",
+            "srcset",
+            "data-srcset",
+            "src",
+        ]:
+            value = img.get(attr)
+            if value:
+                return clean_text(value)
+
+    if tag.has_attr("content"):
+        return clean_text(tag["content"])
+
+    return ""
+
+
 def selector_text(soup: BeautifulSoup, selectors: List[str]) -> str:
     for selector in selectors:
         if not selector:
             continue
 
         selector = selector.strip()
-
-        # В config.yml должны быть CSS-селекторы, а не HTML-фрагменты.
-        # Например, нельзя: <small style="font-size: 12px;">(45)</small>
-        # Нужно: small[style*='font-size: 12px']
         if selector.startswith("<"):
             continue
 
@@ -142,18 +170,10 @@ def selector_text(soup: BeautifulSoup, selectors: List[str]) -> str:
         if not found:
             continue
 
-        if found.name == "meta" and found.get("content"):
-            return clean_text(found.get("content"))
-
-        if found.name == "img":
-            # На WordPress/ленивой загрузке обложка часто лежит не в src,
-            # а в data-src, data-lazy-src, data-original или srcset.
-            for attr in ["data-src", "data-lazy-src", "data-original", "src", "srcset"]:
-                if found.get(attr):
-                    return clean_text(found.get(attr))
-
-        if found.has_attr("content"):
-            return clean_text(found["content"])
+        # Для изображений/мета/link сначала пытаемся достать URL из атрибутов.
+        image_value = _image_value_from_tag(found)
+        if image_value:
+            return image_value
 
         return clean_text(found.get_text(" ", strip=True))
 
@@ -166,36 +186,78 @@ def clean_image_url(value: Any) -> str:
         return ""
 
     value = clean_text(str(value))
-
-    # Если случайно пришёл словарь/список строкой, это не URL картинки.
-    if value.startswith("{") or value.startswith("["):
+    if value.startswith("{") or value.startswith("[") or value.startswith("data:"):
         return ""
 
     # srcset: берём последний вариант, обычно он самый крупный.
-    # Пример: "small.jpg 300w, big.jpg 800w" -> "big.jpg"
     if "," in value and " " in value:
         parts = [part.strip() for part in value.split(",") if part.strip()]
         if parts:
             value = parts[-1].split()[0]
     elif " " in value:
-        # srcset без запятых или лишний хвост после URL.
         value = value.split()[0]
 
-    # Чиним частую ошибку JSON-LD/парсинга: https:/site -> https://site
     if value.startswith("https:/") and not value.startswith("https://"):
         value = value.replace("https:/", "https://", 1)
     if value.startswith("http:/") and not value.startswith("http://"):
         value = value.replace("http:/", "http://", 1)
 
+    lower = value.lower().split("?")[0]
+
+    # Не отдаём Директу SVG-иконки и служебные пиксели вместо обложек.
+    bad_fragments = ["sapphire.svg", "svg-icons", "mc.yandex", "favicon", "logo"]
+    if any(fragment in lower for fragment in bad_fragments):
+        return ""
+
+    allowed = lower.endswith((".jpg", ".jpeg", ".png", ".webp", ".gif"))
+    if value.startswith(("http://", "https://")) and not allowed:
+        return ""
+
     return value
 
 
 def normalize_currency_id(value: Any, default: str = "RUB") -> str:
-    """Возвращает валидный currencyId для YML.
+    """Для Директа используем только валидную валюту RUB."""
+    text = clean_text(value).upper()
+    if not text:
+        return default
+    if text in {"РУБ", "РУБ.", "RUR", "RUB", "₽"}:
+        return "RUB"
+    return "RUB"
 
-    Для Яндекс Директа не используем внутренние валюты типа "сапфиры"
-    в currencyId: такие товары могут стать невалидными.
-    Поэтому currencyId всегда приводим к RUB, если явно не задана валидная валюта.
+
+def selector_text_with_selector(soup: BeautifulSoup, selectors: List[str]) -> tuple[str, str]:
+    for selector in selectors:
+        text = selector_text(soup, [selector])
+        if text:
+            return text, selector
+    return "", ""
+
+
+def detect_internal_currency_from_price(raw_price: str, selector: str) -> str:
+    text = clean_text(raw_price).lower()
+    sel = clean_text(selector).lower()
+    if "sapphire" in text or "сапф" in text or "sapphires" in sel:
+        return "sapphire"
+    if "руб" in text or "₽" in text or "pricev" in sel:
+        return "rub"
+    return ""
+
+
+def should_exclude_title(title: str, config: Dict[str, Any]) -> bool:
+    for pattern in config.get("product_exclusions", {}).get("title_regex", []):
+        try:
+            if re.search(pattern, title or "", flags=re.I):
+                return True
+        except re.error:
+            continue
+    return False
+
+def normalize_currency_id(value: Any, default: str = "SAPPHIRE") -> str:
+    """Возвращает currencyId для YML-фида.
+
+    По умолчанию используем SAPPHIRE для внутренней валюты сайта.
+    Рублёвые цены определяем по тексту/селектору или задаём через overrides.csv.
     """
     text = clean_text(value).upper()
     if not text:
@@ -207,12 +269,12 @@ def normalize_currency_id(value: Any, default: str = "RUB") -> str:
         "RUR": "RUB",
         "RUB": "RUB",
         "₽": "RUB",
-        "САПФИР": "RUB",
-        "САПФИРЫ": "RUB",
-        "SAPPHIRE": "RUB",
-        "SAPPHIRES": "RUB",
+        "SAPPHIRE": "SAPPHIRE",
+        "SAPPHIRES": "SAPPHIRE",
+        "САПФИР": "SAPPHIRE",
+        "САПФИРЫ": "SAPPHIRE",
     }
-    return mapping.get(text, default)
+    return mapping.get(text, text)
 
 
 def selector_text_with_selector(soup: BeautifulSoup, selectors: List[str]) -> tuple[str, str]:
@@ -224,30 +286,19 @@ def selector_text_with_selector(soup: BeautifulSoup, selectors: List[str]) -> tu
     return "", ""
 
 
-def detect_internal_currency_from_price(raw_price: str, selector: str) -> str:
-    """Определяет внутренний тип цены для доп. параметров фида."""
+def detect_currency_from_price(raw_price: str, selector: str, default_currency: str) -> str:
+    """Определяет валюту по тексту цены и селектору, из которого цена была взята."""
     text = clean_text(raw_price).lower()
     sel = clean_text(selector).lower()
 
-    if "sapphire" in text or "сапф" in text or "sapphires" in sel:
-        return "sapphire"
-
     if "руб" in text or "₽" in text or "pricev" in sel:
-        return "rub"
+        return "RUB"
 
-    return ""
+    if "sapphire" in text or "сапф" in text or "sapphires" in sel:
+        return "SAPPHIRE"
 
+    return normalize_currency_id(default_currency, "SAPPHIRE")
 
-def is_excluded_product_title(title: str, config: Dict[str, Any]) -> bool:
-    """Исключает не-книжные товары, например пакеты сапфиров."""
-    title = clean_text(title)
-    for pattern in config.get("product_exclusions", {}).get("title_regex", []):
-        try:
-            if re.search(pattern, title, flags=re.IGNORECASE):
-                return True
-        except re.error:
-            continue
-    return False
 
 def find_embedded_ids(html: str) -> str:
     patterns = [
@@ -317,7 +368,7 @@ def description_for(book: Book, config: Dict[str, Any]) -> str:
 
 def parse_book(url: str, source: str, config: Dict[str, Any]) -> Book:
     html = fetch(url, config)
-    book = Book(offer_id=stable_id_from_url(url), url=normalize_url(url), currency=normalize_currency_id(config["shop"].get("currency", "RUB")), source=source)
+    book = Book(offer_id=stable_id_from_url(url), url=normalize_url(url), currency="RUB", source=source)
     errors = []
     if not html:
         book.errors = "fetch_failed"
@@ -347,8 +398,7 @@ def parse_book(url: str, source: str, config: Dict[str, Any]) -> Book:
         soup.title.string if soup.title else "",
     )
     book.title = title
-
-    if is_excluded_product_title(book.title, config):
+    if should_exclude_title(book.title, config):
         book.errors = "excluded_title_sapphires"
         return book
 
@@ -358,25 +408,29 @@ def parse_book(url: str, source: str, config: Dict[str, Any]) -> Book:
         selector_text(soup, selectors.get("author", [])),
     )
     # Цена может быть в сапфирах (.sapphires) или рублях (.pricev).
-    # В currencyId для Директа всегда отдаём валидную валюту RUB,
-    # а внутреннюю валюту сохраняем отдельными param.
+    # Для Директа currencyId оставляем RUB, а сапфиры сохраняем в param.
     selector_price, price_selector = selector_text_with_selector(soup, selectors.get("price", []))
     raw_price = first_value(offers.get("price"), selector_price)
     book.price = extract_number(parse_price(raw_price))
     book.currency = "RUB"
-    book.internal_currency = detect_internal_currency_from_price(raw_price, price_selector)
-    if book.internal_currency == "sapphire":
+    internal_currency = detect_internal_currency_from_price(raw_price, price_selector)
+    book.internal_currency = internal_currency
+    if internal_currency == "sapphire":
         book.sapphires_price = book.price
     # В JSON-LD поле image может быть строкой, списком или объектом вида
     # {"@id": "..."} / {"url": "..."}. Сначала аккуратно достаём URL,
     # затем fallback на og:image/twitter:image и CSS-селекторы из config.yml.
-    raw_image_url = first_value(
-        extract_image_from_value(product.get("image")),
-        meta_content(soup, "og:image", "twitter:image"),
+    image_candidates = [
         selector_text(soup, selectors.get("image_url", [])),
         selector_text(soup, selectors.get("image", [])),
-    )
-    book.image_url = normalize_url(clean_image_url(raw_image_url), url)
+        meta_content(soup, "og:image", "twitter:image"),
+        extract_image_from_value(product.get("image")),
+    ]
+    for candidate in image_candidates:
+        cleaned = clean_image_url(candidate)
+        if cleaned:
+            book.image_url = normalize_url(cleaned, url)
+            break
     book.description = first_value(
         product.get("description"),
         meta_content(soup, "description", "og:description"),
