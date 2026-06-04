@@ -66,13 +66,16 @@ selectors:
     - ".book-author"
     - "[itemprop='author']"
   price:
-    # Рублёвая цена: <span class="pricev">1049 руб</span>
+    - ".summary .pricev"
+    - ".entry-summary .pricev"
+    - ".product .pricev"
+    - ".single-product .pricev"
+    - ".summary .sapphires"
+    - ".entry-summary .sapphires"
+    - ".product .sapphires"
+    - ".single-product .sapphires"
     - ".pricev"
-    # Цена в сапфирах: <div class="sapphires">199 ...</div>
     - ".sapphires"
-    - ".price"
-    - ".book-price"
-    - "[itemprop='price']"
   image_url:
     - "meta[property='og:image']"
     - "meta[name='twitter:image']"
