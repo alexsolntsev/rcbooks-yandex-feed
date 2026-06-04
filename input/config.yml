@@ -66,14 +66,6 @@ selectors:
     - ".book-author"
     - "[itemprop='author']"
   price:
-    - ".summary .pricev"
-    - ".entry-summary .pricev"
-    - ".product .pricev"
-    - ".single-product .pricev"
-    - ".summary .sapphires"
-    - ".entry-summary .sapphires"
-    - ".product .sapphires"
-    - ".single-product .sapphires"
     - ".pricev"
     - ".sapphires"
   image_url:

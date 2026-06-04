@@ -4,8 +4,7 @@ import json
 import re
 import time
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
-from urllib.parse import urlparse
+from typing import Any, Dict, List
 
 from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
@@ -31,26 +30,26 @@ def first_value(*values: Any) -> str:
             return text
     return ""
 
-def extract_number(value):
+
+def extract_number(value: Any) -> str:
     if value is None:
         return ""
-
     text = str(value)
     match = re.search(r"\d+(?:[.,]\d+)?", text)
-
     if not match:
         return ""
-
     return match.group(0).replace(",", ".")
 
-def extract_image_from_value(value) -> str:
+
+def extract_image_from_value(value: Any) -> str:
     """
-    Достаёт URL картинки из разных форматов:
+    Достаёт URL картинки из JSON-LD:
     - строка
     - список
-    - JSON-LD объект {"url": "..."} / {"contentUrl": "..."} / {"@id": "..."}
+    - объект {"url": "..."} / {"contentUrl": "..."} / {"@id": "..."}
 
-    @id часто указывает на страницу товара, а не на изображение — такие URL отбрасываем.
+    Важно: @id иногда указывает не на изображение, а на страницу товара.
+    Такие URL отбрасываем.
     """
     if not value:
         return ""
@@ -70,7 +69,7 @@ def extract_image_from_value(value) -> str:
         return ""
 
     text = clean_text(str(value))
-    if not text or text.startswith("{") or text.startswith("["):
+    if not text or text.startswith("{") or text.startswith("[") or text.startswith("data:"):
         return ""
 
     lower = text.lower().split("?")[0]
@@ -80,6 +79,7 @@ def extract_image_from_value(value) -> str:
             return ""
 
     return text
+
 
 def extract_json_ld(soup: BeautifulSoup) -> List[Dict[str, Any]]:
     items: List[Dict[str, Any]] = []
@@ -119,8 +119,55 @@ def meta_content(soup: BeautifulSoup, *keys: str) -> str:
     return ""
 
 
+def selector_text(soup: BeautifulSoup, selectors: List[str]) -> str:
+    """
+    Универсальный текстовый селектор.
+
+    Важно: для <div class="sapphires">199 <img ...></div> возвращает именно текст div,
+    а не src вложенной картинки. Это нужно, чтобы цена не парсилась из sapphire.svg.
+    """
+    for selector in selectors:
+        if not selector:
+            continue
+        selector = selector.strip()
+        if selector.startswith("<"):
+            continue
+
+        try:
+            found = soup.select_one(selector)
+        except Exception:
+            continue
+
+        if not found:
+            continue
+
+        if found.name == "meta" and found.get("content"):
+            return clean_text(found.get("content"))
+
+        if found.name == "img":
+            for attr in ["alt", "title", "src"]:
+                if found.get(attr):
+                    return clean_text(found.get(attr))
+
+        if found.has_attr("content"):
+            return clean_text(found["content"])
+
+        return clean_text(found.get_text(" ", strip=True))
+
+    return ""
+
+
+def selector_text_with_selector(soup: BeautifulSoup, selectors: List[str]) -> tuple[str, str]:
+    """Возвращает найденный текст и селектор, который сработал."""
+    for selector in selectors:
+        text = selector_text(soup, [selector])
+        if text:
+            return text, selector
+    return "", ""
+
+
 def _image_value_from_tag(tag) -> str:
-    """Берёт лучшую ссылку на изображение из img/meta/link или вложенного img."""
+    """Берёт ссылку на изображение из img/meta/link или вложенного img."""
     if not tag:
         return ""
 
@@ -132,7 +179,6 @@ def _image_value_from_tag(tag) -> str:
 
     img = tag if tag.name == "img" else tag.find("img")
     if img:
-        # WooCommerce часто хранит большую обложку в data-large_image.
         for attr in [
             "data-large_image",
             "data-full",
@@ -153,11 +199,11 @@ def _image_value_from_tag(tag) -> str:
     return ""
 
 
-def selector_text(soup: BeautifulSoup, selectors: List[str]) -> str:
+def selector_image_url(soup: BeautifulSoup, selectors: List[str]) -> str:
+    """Селектор только для изображений."""
     for selector in selectors:
         if not selector:
             continue
-
         selector = selector.strip()
         if selector.startswith("<"):
             continue
@@ -167,15 +213,9 @@ def selector_text(soup: BeautifulSoup, selectors: List[str]) -> str:
         except Exception:
             continue
 
-        if not found:
-            continue
-
-        # Для изображений/мета/link сначала пытаемся достать URL из атрибутов.
-        image_value = _image_value_from_tag(found)
-        if image_value:
-            return image_value
-
-        return clean_text(found.get_text(" ", strip=True))
+        value = _image_value_from_tag(found)
+        if value:
+            return value
 
     return ""
 
@@ -204,8 +244,14 @@ def clean_image_url(value: Any) -> str:
 
     lower = value.lower().split("?")[0]
 
-    # Не отдаём Директу SVG-иконки и служебные пиксели вместо обложек.
-    bad_fragments = ["sapphire.svg", "svg-icons", "mc.yandex", "favicon", "logo"]
+    bad_fragments = [
+        "sapphire.svg",
+        "svg-icons",
+        "mc.yandex",
+        "favicon",
+        "logo",
+        "placeholder",
+    ]
     if any(fragment in lower for fragment in bad_fragments):
         return ""
 
@@ -214,24 +260,6 @@ def clean_image_url(value: Any) -> str:
         return ""
 
     return value
-
-
-def normalize_currency_id(value: Any, default: str = "RUB") -> str:
-    """Для Директа используем только валидную валюту RUB."""
-    text = clean_text(value).upper()
-    if not text:
-        return default
-    if text in {"РУБ", "РУБ.", "RUR", "RUB", "₽"}:
-        return "RUB"
-    return "RUB"
-
-
-def selector_text_with_selector(soup: BeautifulSoup, selectors: List[str]) -> tuple[str, str]:
-    for selector in selectors:
-        text = selector_text(soup, [selector])
-        if text:
-            return text, selector
-    return "", ""
 
 
 def detect_internal_currency_from_price(raw_price: str, selector: str) -> str:
@@ -252,52 +280,6 @@ def should_exclude_title(title: str, config: Dict[str, Any]) -> bool:
         except re.error:
             continue
     return False
-
-def normalize_currency_id(value: Any, default: str = "SAPPHIRE") -> str:
-    """Возвращает currencyId для YML-фида.
-
-    По умолчанию используем SAPPHIRE для внутренней валюты сайта.
-    Рублёвые цены определяем по тексту/селектору или задаём через overrides.csv.
-    """
-    text = clean_text(value).upper()
-    if not text:
-        return default
-
-    mapping = {
-        "РУБ": "RUB",
-        "РУБ.": "RUB",
-        "RUR": "RUB",
-        "RUB": "RUB",
-        "₽": "RUB",
-        "SAPPHIRE": "SAPPHIRE",
-        "SAPPHIRES": "SAPPHIRE",
-        "САПФИР": "SAPPHIRE",
-        "САПФИРЫ": "SAPPHIRE",
-    }
-    return mapping.get(text, text)
-
-
-def selector_text_with_selector(soup: BeautifulSoup, selectors: List[str]) -> tuple[str, str]:
-    """Возвращает найденный текст и CSS-селектор, который сработал."""
-    for selector in selectors:
-        text = selector_text(soup, [selector])
-        if text:
-            return text, selector
-    return "", ""
-
-
-def detect_currency_from_price(raw_price: str, selector: str, default_currency: str) -> str:
-    """Определяет валюту по тексту цены и селектору, из которого цена была взята."""
-    text = clean_text(raw_price).lower()
-    sel = clean_text(selector).lower()
-
-    if "руб" in text or "₽" in text or "pricev" in sel:
-        return "RUB"
-
-    if "sapphire" in text or "сапф" in text or "sapphires" in sel:
-        return "SAPPHIRE"
-
-    return normalize_currency_id(default_currency, "SAPPHIRE")
 
 
 def find_embedded_ids(html: str) -> str:
@@ -324,6 +306,7 @@ def parse_published_at(value: str) -> str:
 
 def classify(book: Book, config: Dict[str, Any], page_sources: List[str]) -> None:
     cls = config.get("classification", {})
+
     price = float(book.price) if book.price else 0
     cheap_threshold = float(cls.get("cheap_price_threshold", 150))
     if price and price <= cheap_threshold:
@@ -339,6 +322,7 @@ def classify(book: Book, config: Dict[str, Any], page_sources: List[str]) -> Non
                 book.feed_group = "new"
         except Exception:
             pass
+
     if any(src in {"new", "novinki", "new_books"} for src in page_sources):
         book.is_new = "true"
         book.feed_group = "new"
@@ -349,6 +333,7 @@ def classify(book: Book, config: Dict[str, Any], page_sources: List[str]) -> Non
         book.is_popular = "true"
         if book.feed_group == "default":
             book.feed_group = "popular"
+
     if any(src in {"popular", "top", "hit"} for src in page_sources):
         book.is_popular = "true"
         if book.feed_group == "default":
@@ -370,9 +355,11 @@ def parse_book(url: str, source: str, config: Dict[str, Any]) -> Book:
     html = fetch(url, config)
     book = Book(offer_id=stable_id_from_url(url), url=normalize_url(url), currency="RUB", source=source)
     errors = []
+
     if not html:
         book.errors = "fetch_failed"
         return book
+
     soup = BeautifulSoup(html, "html5lib")
 
     canonical = soup.find("link", rel=lambda x: x and "canonical" in x)
@@ -381,23 +368,23 @@ def parse_book(url: str, source: str, config: Dict[str, Any]) -> Book:
         book.offer_id = stable_id_from_url(book.url)
 
     product = pick_product_jsonld(extract_json_ld(soup))
-    offers = product.get("offers") if isinstance(product.get("offers"), dict) else {}
     brand = product.get("brand") if isinstance(product.get("brand"), dict) else product.get("brand")
     author = product.get("author") if isinstance(product.get("author"), dict) else product.get("author")
     aggregate = product.get("aggregateRating") if isinstance(product.get("aggregateRating"), dict) else {}
 
     selectors = config.get("selectors", {})
+
     embedded_id = find_embedded_ids(html)
     if embedded_id:
         book.offer_id = embedded_id
 
-    title = first_value(
+    book.title = first_value(
         product.get("name"),
         meta_content(soup, "og:title", "twitter:title"),
         selector_text(soup, selectors.get("title", [])),
         soup.title.string if soup.title else "",
     )
-    book.title = title
+
     if should_exclude_title(book.title, config):
         book.errors = "excluded_title_sapphires"
         return book
@@ -407,22 +394,23 @@ def parse_book(url: str, source: str, config: Dict[str, Any]) -> Book:
         brand.get("name") if isinstance(brand, dict) else brand,
         selector_text(soup, selectors.get("author", [])),
     )
-    # Цена может быть в сапфирах (.sapphires) или рублях (.pricev).
-    # Для Директа currencyId оставляем RUB, а сапфиры сохраняем в param.
-    selector_price, price_selector = selector_text_with_selector(soup, selectors.get("price", []))
-    raw_price = first_value(offers.get("price"), selector_price)
-    book.price = extract_number(parse_price(raw_price))
+
+    # Важно: цену берём ТОЛЬКО из HTML по простым селекторам из config.yml.
+    # JSON-LD price не используем, потому что он начал отдавать одинаковую цену для разных книг.
+    raw_price, price_selector = selector_text_with_selector(soup, selectors.get("price", []))
+    book.price = parse_price(raw_price)
+    if not book.price:
+        book.price = extract_number(raw_price)
+
+    # Для Директа currencyId всегда RUB. Сапфиры сохраняем как внутреннюю валюту.
     book.currency = "RUB"
-    internal_currency = detect_internal_currency_from_price(raw_price, price_selector)
-    book.internal_currency = internal_currency
-    if internal_currency == "sapphire":
+    book.internal_currency = detect_internal_currency_from_price(raw_price, price_selector)
+    if book.internal_currency == "sapphire":
         book.sapphires_price = book.price
-    # В JSON-LD поле image может быть строкой, списком или объектом вида
-    # {"@id": "..."} / {"url": "..."}. Сначала аккуратно достаём URL,
-    # затем fallback на og:image/twitter:image и CSS-селекторы из config.yml.
+
     image_candidates = [
-        selector_text(soup, selectors.get("image_url", [])),
-        selector_text(soup, selectors.get("image", [])),
+        selector_image_url(soup, selectors.get("image_url", [])),
+        selector_image_url(soup, selectors.get("image", [])),
         meta_content(soup, "og:image", "twitter:image"),
         extract_image_from_value(product.get("image")),
     ]
@@ -431,22 +419,34 @@ def parse_book(url: str, source: str, config: Dict[str, Any]) -> Book:
         if cleaned:
             book.image_url = normalize_url(cleaned, url)
             break
+
     book.description = first_value(
         product.get("description"),
         meta_content(soup, "description", "og:description"),
         selector_text(soup, selectors.get("description", [])),
     )
-    book.rating = first_value(aggregate.get("ratingValue"), selector_text(soup, selectors.get("rating", [])))
-    book.reviews_count = extract_number(first_value(aggregate.get("reviewCount"), selector_text(soup, selectors.get("reviews_count", []))))
+
+    book.rating = first_value(
+        aggregate.get("ratingValue"),
+        selector_text(soup, selectors.get("rating", [])),
+    )
+    book.reviews_count = extract_number(
+        first_value(
+            aggregate.get("reviewCount"),
+            selector_text(soup, selectors.get("reviews_count", [])),
+        )
+    )
     book.published_at = parse_published_at(first_value(product.get("datePublished"), product.get("dateCreated")))
 
+    offers = product.get("offers") if isinstance(product.get("offers"), dict) else {}
     if offers.get("availability"):
         avail = str(offers.get("availability")).lower()
         book.availability = "false" if "outofstock" in avail or "soldout" in avail else "true"
 
     source_tokens = [source.lower()]
     classify(book, config, source_tokens)
-    # Replace content description with ad-safe template by default.
+
+    # Для рекламного фида используем шаблонное описание, а не длинное описание книги.
     book.description = description_for(book, config)
 
     if not book.title:
@@ -457,6 +457,7 @@ def parse_book(url: str, source: str, config: Dict[str, Any]) -> Book:
         errors.append("missing_image")
     if not book.url:
         errors.append("missing_url")
+
     book.errors = ";".join(errors)
     return book
 
@@ -467,12 +468,14 @@ def main() -> None:
     urls = read_csv(urls_file)
     rows = []
     delay = float(config["crawl"].get("delay_seconds", 0.4))
+
     for i, row in enumerate(urls, 1):
         book = parse_book(row["url"], row.get("source", "auto"), config)
         rows.append(book.to_dict())
         if i % 25 == 0:
             print(f"Parsed {i}/{len(urls)}")
         time.sleep(delay)
+
     fieldnames = list(Book(offer_id="", url="").to_dict().keys())
     write_csv(ROOT / config["feed"]["parsed_file"], rows, fieldnames)
     print(f"Parsed {len(rows)} books")
